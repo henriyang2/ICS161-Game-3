@@ -22,15 +22,8 @@ public class PlatformGenerator : MonoBehaviour
 	
     void Spawn ()
     {
-        //Attempt to get a platform from the platform pool
+        //Get a platform from the platform pool
         GameObject obj = ObjectPooler.current.GetPooledObject();
-
-        //If a platform could not be found in the pool, try again to get one as fast as possible 
-        if (obj == null)
-        {
-            Spawn();
-            return;
-        }
 
         //Setting up platform location and size
         //Random.Range(-0.5f, 0.5f) offset to make platforms not spawn right on top of each other (hopefully)

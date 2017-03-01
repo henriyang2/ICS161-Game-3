@@ -21,9 +21,7 @@ public class ObjectPooler : MonoBehaviour
         //Create poolAmount number of objects and store them
         for (int i = 0; i < poolAmount; i++)
         {
-            GameObject obj = (GameObject)Instantiate(pooledObj);
-            obj.SetActive(false);
-            pooledObjs.Add(obj);
+            createNewPoolObject();
         }
     }
 
@@ -38,7 +36,19 @@ public class ObjectPooler : MonoBehaviour
             }
         }
 
-        //No object was usable in the pool
-        return null;
+        //No object was usable in the pool, so create a new one
+        return createNewPoolObject();
+    }
+
+    /*
+     * Creates a new pooledObj and adds it to the pool.
+     * @return The newly created poolObject
+     */
+    private GameObject createNewPoolObject()
+    {
+        GameObject obj = Instantiate(pooledObj);
+        obj.SetActive(false);
+        pooledObjs.Add(obj);
+        return obj;
     }
 }
