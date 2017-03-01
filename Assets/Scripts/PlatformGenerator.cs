@@ -12,7 +12,7 @@ public class PlatformGenerator : MonoBehaviour
     public float spawnMax = 3.5f;
 
     //Just rough platform sizes for playtesting purposes, can tune this if needed
-    private float[] platformSizes = new float[] {2f, 2.5f, 3.5f};
+    public float[] platformSizes = new float[] {2f, 2.5f, 3.5f};
 
 	void Start () 
     {
