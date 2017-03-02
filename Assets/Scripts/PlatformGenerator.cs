@@ -12,7 +12,7 @@ public class PlatformGenerator : MonoBehaviour
     public float spawnMax = 3.5f;
 
     //Just rough platform sizes for playtesting purposes, can tune this if needed
-    private float[] platformSizes = new float[] {2f, 2.5f, 3.5f};
+    public float[] platformSizes = new float[] {2f, 2.5f, 3.5f};
 
 	void Start () 
     {
@@ -22,22 +22,15 @@ public class PlatformGenerator : MonoBehaviour
 	
     void Spawn ()
     {
-        //Attempt to get a platform from the platform pool
+        //Get a platform from the platform pool
         GameObject obj = ObjectPooler.current.GetPooledObject();
-
-        //If a platform could not be found in the pool, try again to get one as fast as possible 
-        if (obj == null)
-        {
-            Spawn();
-            return;
-        }
 
         //Setting up platform location and size
         //Random.Range(-0.5f, 0.5f) offset to make platforms not spawn right on top of each other (hopefully)
         //Change size based on the three platform sizes initiated, can tune this if needed
         obj.transform.position = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y, transform.position.z);
         obj.transform.rotation = transform.rotation;
-        obj.transform.localScale = new Vector3(platformSizes[Random.Range(0, platformSizes.GetLength(0))], obj.transform.localScale.y, obj.transform.localScale.z);
+        obj.transform.localScale = new Vector3(platformSizes[Random.Range(0, platformSizes.Length)], obj.transform.localScale.y, obj.transform.localScale.z);
 
         //Enable the object
         obj.SetActive(true);
