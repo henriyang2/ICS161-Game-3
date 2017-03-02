@@ -15,6 +15,7 @@ public class PowerUp : MonoBehaviour {
         {
             ActivatePowerUp(collider.gameObject);
         }
+        //If the power-up gets to the deathTrigger, no one picked it up, so delete it for performance
         else if (collider.gameObject.name == "deathTrigger")
         {
             destroyPowerUp();

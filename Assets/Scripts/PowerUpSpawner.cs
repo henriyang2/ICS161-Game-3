@@ -15,7 +15,6 @@ public class PowerUpSpawner : MonoBehaviour {
 	void Start () {
         //Get the list of platform generators
         generators = GameObject.FindGameObjectsWithTag("PlatformGenerator");
-        Debug.Log(generators);
     }
 	
 	// Update is called once per frame
