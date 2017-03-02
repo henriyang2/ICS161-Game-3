@@ -30,7 +30,7 @@ public class PlatformGenerator : MonoBehaviour
         //Change size based on the three platform sizes initiated, can tune this if needed
         obj.transform.position = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y, transform.position.z);
         obj.transform.rotation = transform.rotation;
-        obj.transform.localScale = new Vector3(platformSizes[Random.Range(0, platformSizes.GetLength(0))], obj.transform.localScale.y, obj.transform.localScale.z);
+        obj.transform.localScale = new Vector3(platformSizes[Random.Range(0, platformSizes.Length)], obj.transform.localScale.y, obj.transform.localScale.z);
 
         //Enable the object
         obj.SetActive(true);
