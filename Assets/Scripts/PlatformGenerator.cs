@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour 
 {
-    //Transform added through inspector, basically the spawning point
-    public Transform platformGenerationPoint;
-
     //The min and max amount of time for Random.Range it takes to spawn a platform
-    public float spawnMin = 2.75f;
-    public float spawnMax = 3.5f;
+    public float spawnMin = 3f;
+    public float spawnMax = 3.75f;
 
     //Just rough platform sizes for playtesting purposes, can tune this if needed
     public float[] platformSizes = new float[] {2f, 2.5f, 3.5f};
