@@ -21,3 +21,5 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 *.orig
+Assets/Scenes/Grant.unity
+Assets/Scenes/Grant.unity.meta
