@@ -23,10 +23,10 @@ public class PowerUp_Speed : PowerUp {
         PController = player.GetComponent<PlayerController>();
         oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
         
-        oldSpeed = PController.moveSpeed;
+        oldSpeed = PController.maxSpeed;
         oldJumpForce = PController.jumpForce;
 
-        PController.moveSpeed = oldSpeed + SpeedCapIncrease;
+        PController.maxSpeed = oldSpeed + SpeedCapIncrease;
         PController.jumpForce = oldJumpForce + JumpForceIncrease;
         PController.gameObject.GetComponent<Renderer>().material = newMaterial;
 
@@ -38,7 +38,7 @@ public class PowerUp_Speed : PowerUp {
     void RevertStats()
     {
         //Reverts all changes the power-up made to the player
-        PController.moveSpeed = oldSpeed;
+        PController.maxSpeed = oldSpeed;
         PController.jumpForce = oldJumpForce;
         PController.gameObject.GetComponent<Renderer>().material = oldMaterial;
         poweredUp = false;

@@ -210,9 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c7ccb81e187a349b8eadc0b722f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 450
+  moveForce: 80
+  maxSpeed: 5
   jump: 0
-  jumpForce: 1000
+  jumpForce: 20
   groundCheck1: {fileID: 1410972513}
   groundCheck2: {fileID: 572906949}
   groundCheck3: {fileID: 1696970980}
@@ -523,9 +524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c7ccb81e187a349b8eadc0b722f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 450
+  moveForce: 80
+  maxSpeed: 5
   jump: 0
-  jumpForce: 1000
+  jumpForce: 20
   groundCheck1: {fileID: 1565919946}
   groundCheck2: {fileID: 1592148823}
   groundCheck3: {fileID: 439039598}
