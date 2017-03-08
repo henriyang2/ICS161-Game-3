@@ -374,6 +374,8 @@ MonoBehaviour:
   platformPermutationsList:
   - {fileID: 1730586423757672, guid: 102ac7a96248cce498d3f4b0123ddae7, type: 2}
   - {fileID: 1065535309367626, guid: 2d1722ade365ce64e8429c1fbeb25d49, type: 2}
+  - {fileID: 1185511087945386, guid: 56ad80ebff0737e498471140c3b36b67, type: 2}
+  - {fileID: 1909065646173518, guid: 3cf9d3802be37c94da7025ed40ede287, type: 2}
 --- !u!33 &228514946
 MeshFilter:
   m_ObjectHideFlags: 0
