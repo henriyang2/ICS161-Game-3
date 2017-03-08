@@ -217,6 +217,8 @@ MonoBehaviour:
   groundCheck1: {fileID: 1410972513}
   groundCheck2: {fileID: 572906949}
   groundCheck3: {fileID: 1696970980}
+  PLAYER_INPUT_HORIZONTAL_AXIS_STRING: Horizontal1
+  PLAYER_INPUT_JUMP_STRING: JumpPlayer1
 --- !u!1 &89331855
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +531,8 @@ MonoBehaviour:
   groundCheck1: {fileID: 1565919946}
   groundCheck2: {fileID: 1592148823}
   groundCheck3: {fileID: 439039598}
+  PLAYER_INPUT_HORIZONTAL_AXIS_STRING: Horizontal2
+  PLAYER_INPUT_JUMP_STRING: JumpPlayer2
 --- !u!50 &504971703
 Rigidbody2D:
   serializedVersion: 4
@@ -1522,7 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f069aac14d68847823ab52d34d704e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 0.01
+  cameraSpeed: 0
 --- !u!114 &1835590168
 MonoBehaviour:
   m_ObjectHideFlags: 0
