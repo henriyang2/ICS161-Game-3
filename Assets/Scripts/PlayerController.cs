@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
-    public float moveForce = 80f;
-    public float maxSpeed = 5f;
+    public float moveSpeed = 450f;
     public bool jump = false;
-    public float jumpForce = 18f;
+    public float jumpForce = 1000f;
 
     public GameObject groundCheck1;
     public GameObject groundCheck2;
@@ -22,18 +21,18 @@ public class PlayerController : MonoBehaviour
     private bool grounded2;
     private bool grounded3;
 
-    void Awake ()
+    void Awake()
     {
         //Get references
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-	void Start () 
+    void Start()
     {
-		
-	}
-	
-	void Update () 
+
+    }
+
+    void Update()
     {
         //Linecast to check if player is on ground
         //3 linecasts for more accurate ground checks
@@ -41,46 +40,31 @@ public class PlayerController : MonoBehaviour
         grounded2 = Physics2D.Linecast(transform.position, groundCheck2.transform.position, 1 << LayerMask.NameToLayer("Ground"));
         grounded3 = Physics2D.Linecast(transform.position, groundCheck3.transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
-            //If Player pressed W and is grounded, jump
-            if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
-            {
-                jump = true;
-            }
-        
-	}
+        //If Player pressed W and is grounded, jump
+        if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
+        {
+            jump = true;
+        }
 
-    void FixedUpdate ()
+    }
+
+    void FixedUpdate()
     {
         //Variable to hold horizontal GetAxis value
-            float horizontalInputValue;
+        float horizontalInputValue;
 
-            //If Player 1 is holding down A or D buttons to move
-            horizontalInputValue = Input.GetAxis(PLAYER_INPUT_HORIZONTAL_AXIS_STRING);
+        //If Player  is holding down A or D buttons to move
+        horizontalInputValue = Input.GetAxis(PLAYER_INPUT_HORIZONTAL_AXIS_STRING);
 
-            //If Player is no longer holding down A or D buttons, stop
-            if (horizontalInputValue == 0f)
-            {
-                rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
-                rb2d.angularVelocity = 0f;
-            }
 
-            //If Player x velocity is lesser than max speed, keep adding speed
-            if (horizontalInputValue * rb2d.velocity.x < maxSpeed)
-            {
-                rb2d.AddForce(Vector2.right * horizontalInputValue * moveForce);
-            }
+        rb2d.velocity = new Vector2(horizontalInputValue * moveSpeed * Time.deltaTime, rb2d.velocity.y);
 
-            //If Player x velocity is greater than max speed, set player velocity directly to max speed 
-            if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
-            {
-                rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-            }
 
-            //Set y velocity directly to perform the jump
-            if (jump)
-            {
-                jump = false;
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            }
+        //Set y velocity directly to perform the jump
+        if (jump)
+        {
+            jump = false;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce * Time.deltaTime);
+        }
     }
 }
