@@ -19,10 +19,12 @@ public class PowerUp_Speed : PowerUp {
     {
         //Increases the player's speed, then destroys the power up object
         //Also currently changes the player's material to indicate that they're powered up
-
-        PController = player.GetComponent<PlayerController>();
-        oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
+        if(poweredUp == false)
+        { 
+            PController = player.GetComponent<PlayerController>();
+            oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
         
+
         oldSpeed = PController.moveSpeed;
         oldJumpForce = PController.jumpForce;
 
@@ -30,9 +32,11 @@ public class PowerUp_Speed : PowerUp {
         PController.jumpForce = oldJumpForce + JumpForceIncrease;
         PController.gameObject.GetComponent<Renderer>().material = newMaterial;
 
-        poweredUp = true;
 
-        gameObject.GetComponent<Renderer>().enabled = false;
+            poweredUp = true;
+
+            gameObject.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     void RevertStats()
