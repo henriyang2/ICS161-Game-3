@@ -68,7 +68,7 @@ public class PlatformGenerator : MonoBehaviour
         platformPermutationObj.SetActive(true);
             
 
-        //Kick off another spawn after a certain time between spawnMin and spawnMax
+        //Kick off another spawn after spawnTime
         Invoke("Spawn", spawnTime);
     }
 
@@ -84,11 +84,6 @@ public class PlatformGenerator : MonoBehaviour
             {
                 platformPermutationToSpawn = Random.Range(0, platformPermutationsList.Length);
 
-                if (lastPlatformPermutationSpawned == -1)
-                {
-                    lastPlatformPermutationSpawned = platformPermutationToSpawn;
-                }
-
                 //If the permutation we got was not the same as the last permutation spawned, break out of while
                 if (platformPermutationToSpawn != lastPlatformPermutationSpawned)
                 {
@@ -103,6 +98,7 @@ public class PlatformGenerator : MonoBehaviour
             platformPermutationObj.SetActive(true);
         }
 
+        //Kick off another spawn after spawnTime
         Invoke("Spawn", spawnTime);
     }
 }

@@ -210,13 +210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c7ccb81e187a349b8eadc0b722f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 80
-  maxSpeed: 5
+  moveSpeed: 450
   jump: 0
-  jumpForce: 20
+  jumpForce: 1000
   groundCheck1: {fileID: 1410972513}
   groundCheck2: {fileID: 572906949}
   groundCheck3: {fileID: 1696970980}
+  PLAYER_INPUT_HORIZONTAL_AXIS_STRING: Horizontal1
+  PLAYER_INPUT_JUMP_STRING: JumpPlayer1
 --- !u!1 &89331855
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +374,8 @@ MonoBehaviour:
   platformPermutationsList:
   - {fileID: 1730586423757672, guid: 102ac7a96248cce498d3f4b0123ddae7, type: 2}
   - {fileID: 1065535309367626, guid: 2d1722ade365ce64e8429c1fbeb25d49, type: 2}
+  - {fileID: 1185511087945386, guid: 56ad80ebff0737e498471140c3b36b67, type: 2}
+  - {fileID: 1909065646173518, guid: 3cf9d3802be37c94da7025ed40ede287, type: 2}
 --- !u!33 &228514946
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -522,13 +525,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c7ccb81e187a349b8eadc0b722f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 80
-  maxSpeed: 5
+  moveSpeed: 450
   jump: 0
-  jumpForce: 20
+  jumpForce: 1000
   groundCheck1: {fileID: 1565919946}
   groundCheck2: {fileID: 1592148823}
   groundCheck3: {fileID: 439039598}
+  PLAYER_INPUT_HORIZONTAL_AXIS_STRING: Horizontal2
+  PLAYER_INPUT_JUMP_STRING: JumpPlayer2
 --- !u!50 &504971703
 Rigidbody2D:
   serializedVersion: 4
@@ -1553,7 +1557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1876553197
 Transform:
   m_ObjectHideFlags: 0
