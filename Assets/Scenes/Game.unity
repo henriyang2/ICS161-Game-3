@@ -383,6 +383,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 228514942}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &350045343
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064297993431774, guid: 38876759f43b36843b55013eb170269d, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 38876759f43b36843b55013eb170269d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &433829739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1462,7 @@ GameObject:
   - component: {fileID: 1835590166}
   - component: {fileID: 1835590167}
   - component: {fileID: 1835590168}
+  - component: {fileID: 1835590169}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1541,6 +1584,17 @@ MonoBehaviour:
   gameEndText: {fileID: 1309584190}
   restartBtn: {fileID: 1491020220}
   gameEnded: 0
+--- !u!114 &1835590169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835590160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dc047ac6ffde14db5f05442d272037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876553196
 GameObject:
   m_ObjectHideFlags: 0
