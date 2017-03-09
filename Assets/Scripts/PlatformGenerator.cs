@@ -84,8 +84,6 @@ public class PlatformGenerator : MonoBehaviour
             {
                 platformPermutationToSpawn = Random.Range(0, platformPermutationsList.Length);
 
-                Debug.LogError(lastPlatformPermutationSpawned + " " + platformPermutationToSpawn);
-
                 //If the permutation we got was not the same as the last permutation spawned, break out of while
                 if (platformPermutationToSpawn != lastPlatformPermutationSpawned)
                 {
