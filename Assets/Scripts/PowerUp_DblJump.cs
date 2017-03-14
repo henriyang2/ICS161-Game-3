@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp_Speed : PowerUp {
+public class PowerUp_DblJump : PowerUp {
     //Floats holding default values for how much the Speed Power Up boosts the player
     PlayerController PController;
 
-    public float SpeedCapIncrease = 1.5f;
-    public float JumpForceIncrease = 1f;
-    public float duration = 4f;
+    int newMaxJumps = 2;
+    float duration = 10f;
     public bool poweredUp = false;
-    float oldSpeed;
-    float oldJumpForce;
     Material oldMaterial;
     public Material newMaterial;
 
     public override void ActivatePowerUp(GameObject player)
     {
-        //Increases the player's speed, then destroys the power up object
+        //Makes two jumps available to the player
         //Also currently changes the player's material to indicate that they're powered up
+
+        //Changes Material back to the previous one
         if(poweredUp == false)
         { 
             PController = player.GetComponent<PlayerController>();
             oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
-        
 
-        oldSpeed = PController.moveSpeed;
-        oldJumpForce = PController.jumpForce;
-
-        PController.moveSpeed = oldSpeed + SpeedCapIncrease;
-        PController.jumpForce = oldJumpForce + JumpForceIncrease;
-        PController.gameObject.GetComponent<Renderer>().material = newMaterial;
+            PController.GetComponent<Renderer>().material = newMaterial;
+            PController.MaxJumps = newMaxJumps;
+            PController.CurrentJumps = 1;
 
 
             poweredUp = true;
@@ -42,9 +37,8 @@ public class PowerUp_Speed : PowerUp {
     void RevertStats()
     {
         //Reverts all changes the power-up made to the player
-        PController.moveSpeed = oldSpeed;
-        PController.jumpForce = oldJumpForce;
-        PController.gameObject.GetComponent<Renderer>().material = oldMaterial;
+        PController.GetComponent<Renderer>().material = oldMaterial;
+        PController.MaxJumps = 1;
         poweredUp = false;
     }
 
@@ -57,7 +51,7 @@ public class PowerUp_Speed : PowerUp {
         if (duration <= 0)
         {
             RevertStats();
-            duration = 4f;
+            duration = 10f;
             destroyPowerUp();
         }
     }
