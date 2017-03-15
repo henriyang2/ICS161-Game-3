@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour {
 
     GameObject target;
-    float spawnTime = 1f; //seconds between spawning a new power-up
+    float spawnTime = 7f; //seconds between spawning a new power-up
     int IndexNum;
     GameObject[] platforms;
     Vector3 Camera2Platform;
@@ -23,7 +23,7 @@ public class PowerUpSpawner : MonoBehaviour {
         if (spawnTime <= 0)
         {
             platforms = GameObject.FindGameObjectsWithTag("Platform");
-            spawnTime = 1f;
+            spawnTime = 7f;
             IndexNum = Random.Range(0, platforms.Length - 1);
             target = platforms[IndexNum];
             Camera2Platform = Camera.main.WorldToViewportPoint(target.transform.position);
