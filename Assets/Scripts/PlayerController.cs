@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject groundCheck2;
     public GameObject groundCheck3;
 
+    public AudioClip jumpAudioClip;
+
     public string PLAYER_INPUT_HORIZONTAL_AXIS_STRING;
     public string PLAYER_INPUT_JUMP_STRING;
 
@@ -21,10 +23,14 @@ public class PlayerController : MonoBehaviour
     private bool grounded2;
     private bool grounded3;
 
+    private AudioSource playerAudioSource;
+
     void Awake()
     {
         //Get references
         rb2d = GetComponent<Rigidbody2D>();
+
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
         {
             jump = true;
+            playerAudioSource.PlayOneShot(jumpAudioClip);
         }
 
     }

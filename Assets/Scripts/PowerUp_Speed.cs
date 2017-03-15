@@ -14,6 +14,14 @@ public class PowerUp_Speed : PowerUp {
     float oldJumpForce;
     Material oldMaterial;
     public Material newMaterial;
+    public AudioClip collectAudioClip;
+
+    private AudioSource powerupAudioSource;
+
+    void Awake ()
+    { 
+        powerupAudioSource = GetComponent<AudioSource>();
+    }
 
     public override void ActivatePowerUp(GameObject player)
     {
@@ -21,6 +29,8 @@ public class PowerUp_Speed : PowerUp {
         //Also currently changes the player's material to indicate that they're powered up
         if(poweredUp == false)
         { 
+            powerupAudioSource.PlayOneShot(collectAudioClip);
+
             PController = player.GetComponent<PlayerController>();
             oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
         
