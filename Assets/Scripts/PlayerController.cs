@@ -18,18 +18,21 @@ public class PlayerController : MonoBehaviour
     public int MaxJumps = 1;
     public int CurrentJumps = 1;
 
+    public AudioClip jumpAudioClip;
+
     private Rigidbody2D rb2d;
 
     private bool grounded1;
     private bool grounded2;
     private bool grounded3;
 
+    private AudioSource playerAudioSource;
 
     void Awake()
     {
         //Get references
-
         rb2d = GetComponent<Rigidbody2D>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (CurrentJumps >= 1))
         {
             jump = true;
-            
+            playerAudioSource.PlayOneShot(jumpAudioClip);
         }
         
         if (grounded1 || grounded2 || grounded3)
