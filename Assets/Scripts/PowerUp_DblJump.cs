@@ -7,7 +7,7 @@ public class PowerUp_DblJump : PowerUp {
     PlayerController PController;
 
     int newMaxJumps = 2;
-    float duration = 10f;
+    public float duration = 10f;
     public bool poweredUp = false;
     Material oldMaterial;
     public Material newMaterial;
