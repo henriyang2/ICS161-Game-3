@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116129817174580}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 1.35, y: -4.086, z: 0.158}
+  m_LocalPosition: {x: 1.44, y: -4.13, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c299f3797287d36488e8b63898e1eb10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedCapIncrease: -3
-  JumpForceIncrease: -1
-  duration: 6
+  SpeedCapIncrease: -125
+  JumpForceIncrease: -30
+  duration: 4
   poweredUp: 0
   newMaterial: {fileID: 0}
   collectAudioClip: {fileID: 8300000, guid: 8fa16424b048d1f4baddc64790ec1beb, type: 3}
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ede9d59597a0e94c9aa78f599375090, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09f8bd7008792fd43bdfefc58f98db50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
