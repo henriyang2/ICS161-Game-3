@@ -11,6 +11,14 @@ public class PowerUp_DblJump : PowerUp {
     public bool poweredUp = false;
     Material oldMaterial;
     public Material newMaterial;
+    public AudioClip collectAudioClip;
+
+    private AudioSource powerupAudioSource;
+
+    void Awake ()
+    { 
+        powerupAudioSource = GetComponent<AudioSource>();
+    }
 
     public override void ActivatePowerUp(GameObject player)
     {
@@ -20,6 +28,8 @@ public class PowerUp_DblJump : PowerUp {
         //Changes Material back to the previous one
         if(poweredUp == false)
         { 
+            powerupAudioSource.PlayOneShot(collectAudioClip);
+
             PController = player.GetComponent<PlayerController>();
             oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
 
