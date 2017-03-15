@@ -34,7 +34,11 @@ public class Game : MonoBehaviour
     public void EndGame (string winner)
     {
         gameEnded = true;
-
+        //change text color
+        if(winner == "Player 1")
+            gameEndText.GetComponent<Text>().color = new Color(0, 0, 1);
+        if(winner == "Player 2")
+            gameEndText.GetComponent<Text>().color = new Color(1, 0, 0);
         //Freeze time once game has ended
         Time.timeScale = 0f;
 

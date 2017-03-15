@@ -15,15 +15,20 @@ public class PlayerController : MonoBehaviour
     public string PLAYER_INPUT_HORIZONTAL_AXIS_STRING;
     public string PLAYER_INPUT_JUMP_STRING;
 
+    public int MaxJumps = 1;
+    public int CurrentJumps = 1;
+
     private Rigidbody2D rb2d;
 
     private bool grounded1;
     private bool grounded2;
     private bool grounded3;
 
+
     void Awake()
     {
         //Get references
+
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -41,10 +46,14 @@ public class PlayerController : MonoBehaviour
         grounded3 = Physics2D.Linecast(transform.position, groundCheck3.transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
         //If Player pressed W and is grounded, jump
-        if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
+        if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (CurrentJumps >= 1))
         {
             jump = true;
+            
         }
+        
+        if (grounded1 || grounded2 || grounded3)
+            CurrentJumps = MaxJumps;
 
     }
 
@@ -63,8 +72,10 @@ public class PlayerController : MonoBehaviour
         //Set y velocity directly to perform the jump
         if (jump)
         {
-            jump = false;
+            CurrentJumps -= 1;
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce * Time.deltaTime);
+
+            jump = false;
         }
     }
 }
