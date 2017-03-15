@@ -14,31 +14,53 @@ public class PowerUp_Speed : PowerUp {
     float oldJumpForce;
     Material oldMaterial;
     public Material newMaterial;
+    public AudioClip collectAudioClip;
+
+    private AudioSource powerupAudioSource;
+
+    void Awake ()
+    { 
+        powerupAudioSource = GetComponent<AudioSource>();
+    }
 
     public override void ActivatePowerUp(GameObject player)
     {
         //Increases the player's speed, then destroys the power up object
         //Also currently changes the player's material to indicate that they're powered up
+        if (poweredUp == false)
+        {
+            powerupAudioSource.PlayOneShot(collectAudioClip);
 
-        PController = player.GetComponent<PlayerController>();
-        oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
-        
-        oldSpeed = PController.maxSpeed;
-        oldJumpForce = PController.jumpForce;
+            if (SpeedCapIncrease < 0)
+            {
+                if (player.CompareTag("Player 1"))
+                    PController = GameObject.FindGameObjectWithTag("Player 2").GetComponent<PlayerController>();
+                else
+                    PController = GameObject.FindGameObjectWithTag("Player 1").GetComponent<PlayerController>();
+            }
+            else
+                PController = player.GetComponent<PlayerController>(); 
 
-        PController.maxSpeed = oldSpeed + SpeedCapIncrease;
-        PController.jumpForce = oldJumpForce + JumpForceIncrease;
-        PController.gameObject.GetComponent<Renderer>().material = newMaterial;
+            oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
 
-        poweredUp = true;
+            oldSpeed = PController.moveSpeed;
+            oldJumpForce = PController.jumpForce;
 
-        gameObject.GetComponent<Renderer>().enabled = false;
+            PController.moveSpeed = oldSpeed + SpeedCapIncrease;
+            PController.jumpForce = oldJumpForce + JumpForceIncrease;
+            PController.gameObject.GetComponent<Renderer>().material = newMaterial;
+
+
+            poweredUp = true;
+
+            gameObject.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     void RevertStats()
     {
         //Reverts all changes the power-up made to the player
-        PController.maxSpeed = oldSpeed;
+        PController.moveSpeed = oldSpeed;
         PController.jumpForce = oldJumpForce;
         PController.gameObject.GetComponent<Renderer>().material = oldMaterial;
         poweredUp = false;
