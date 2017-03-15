@@ -5,11 +5,11 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour {
 
     GameObject target;
-    float spawnTime = 10f; //seconds between spawning a new power-up
+    float spawnTime = 1f; //seconds between spawning a new power-up
     int IndexNum;
     GameObject[] platforms;
     Vector3 Camera2Platform;
-    int powerUpCount = 1; //change this according to how many power up types are in the game
+    int powerUpCount = 2; //change this according to how many power up types are in the game
 	
     // Use this for initialization
 	void Start () {
@@ -23,13 +23,13 @@ public class PowerUpSpawner : MonoBehaviour {
         if (spawnTime <= 0)
         {
             platforms = GameObject.FindGameObjectsWithTag("Platform");
-            spawnTime = 10f;
+            spawnTime = 1f;
             IndexNum = Random.Range(0, platforms.Length - 1);
             target = platforms[IndexNum];
             Camera2Platform = Camera.main.WorldToViewportPoint(target.transform.position);
             if ( (Camera2Platform.x > 0 && Camera2Platform.x < 1) && (Camera2Platform.y > 0))
             {
-                GameObject clone = Instantiate(    GameObject.FindGameObjectsWithTag("PowerUp")[Random.Range(0, powerUpCount - 1)]);
+                GameObject clone = Instantiate(    GameObject.FindGameObjectsWithTag("PowerUp")[Random.Range(0, powerUpCount)]);
                 clone.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 1, target.transform.position.z);
             }
             
