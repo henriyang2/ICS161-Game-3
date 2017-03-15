@@ -19,18 +19,26 @@ public class PowerUp_Speed : PowerUp {
     {
         //Increases the player's speed, then destroys the power up object
         //Also currently changes the player's material to indicate that they're powered up
-        if(poweredUp == false)
-        { 
-            PController = player.GetComponent<PlayerController>();
+        if (poweredUp == false)
+        {
+            if (SpeedCapIncrease < 0)
+            {
+                if (player.CompareTag("Player 1"))
+                    PController = GameObject.FindGameObjectWithTag("Player 2").GetComponent<PlayerController>();
+                else
+                    PController = GameObject.FindGameObjectWithTag("Player 1").GetComponent<PlayerController>();
+            }
+            else
+                PController = player.GetComponent<PlayerController>(); 
+
             oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
-        
 
-        oldSpeed = PController.moveSpeed;
-        oldJumpForce = PController.jumpForce;
+            oldSpeed = PController.moveSpeed;
+            oldJumpForce = PController.jumpForce;
 
-        PController.moveSpeed = oldSpeed + SpeedCapIncrease;
-        PController.jumpForce = oldJumpForce + JumpForceIncrease;
-        PController.gameObject.GetComponent<Renderer>().material = newMaterial;
+            PController.moveSpeed = oldSpeed + SpeedCapIncrease;
+            PController.jumpForce = oldJumpForce + JumpForceIncrease;
+            PController.gameObject.GetComponent<Renderer>().material = newMaterial;
 
 
             poweredUp = true;
