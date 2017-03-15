@@ -658,6 +658,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114362320525728802, guid: 38876759f43b36843b55013eb170269d,
+        type: 2}
+      propertyPath: SpeedCapIncrease
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362320525728802, guid: 38876759f43b36843b55013eb170269d,
+        type: 2}
+      propertyPath: JumpForceIncrease
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38876759f43b36843b55013eb170269d, type: 2}
   m_IsPrefabParent: 0
@@ -1655,6 +1665,63 @@ Transform:
   m_Father: {fileID: 82669856}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1709076396
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795331543815614, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114246574991251380, guid: e4959daa69ca9f249a012eb8f558995f,
+        type: 2}
+      propertyPath: duration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114246574991251380, guid: e4959daa69ca9f249a012eb8f558995f,
+        type: 2}
+      propertyPath: SpeedCapIncrease
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114246574991251380, guid: e4959daa69ca9f249a012eb8f558995f,
+        type: 2}
+      propertyPath: JumpForceIncrease
+      value: -30
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e4959daa69ca9f249a012eb8f558995f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1835590160
 GameObject:
   m_ObjectHideFlags: 0

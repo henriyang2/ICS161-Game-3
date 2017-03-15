@@ -9,7 +9,7 @@ public class PowerUpSpawner : MonoBehaviour {
     int IndexNum;
     GameObject[] platforms;
     Vector3 Camera2Platform;
-    int powerUpCount = 2; //change this according to how many power up types are in the game
+    int powerUpCount = 3; //change this according to how many power up types are in the game
 	
     // Use this for initialization
 	void Start () {

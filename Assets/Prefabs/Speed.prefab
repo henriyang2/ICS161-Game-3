@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c299f3797287d36488e8b63898e1eb10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedCapIncrease: 1.5
-  JumpForceIncrease: 1
+  SpeedCapIncrease: 2
+  JumpForceIncrease: 1.5
   duration: 6
   poweredUp: 0
   newMaterial: {fileID: 2100000, guid: c63fa8e052a426344866872ec3ca5520, type: 2}
