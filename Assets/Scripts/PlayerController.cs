@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        faceRight = true;
+
     }
 
     void Update()
