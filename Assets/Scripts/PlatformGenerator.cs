@@ -51,11 +51,12 @@ public class PlatformGenerator : MonoBehaviour
             //Setting up platform location and size
             //Change size based on the three platform sizes initiated, can tune this if needed
             Vector3 spawnPos = new Vector3(transform.position.x + Random.Range(-5.3f, 5.3f), transform.position.y + Random.Range(0f, 2f), transform.position.z);
+            Vector3 boxSize = new Vector3(5f, 5f, 1f);
             float lowX = -5f;
             float minHorizontal = 0.3f;
             float lowY = 0f;
             float minVertical = 0.1f;
-            while (Physics.CheckSphere(spawnPos, 10f))
+            while (Physics.CheckBox(spawnPos,boxSize))
             {
                 spawnPos.Set(transform.position.x + Random.Range(lowX, 5.3f), transform.position.y + Random.Range(lowY, lowY + 2f), transform.position.z);
                 lowX += minHorizontal;
