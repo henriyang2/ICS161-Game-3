@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public bool has_power = false;
 
+    private bool faceRight;
+
     void Awake()
     {
         //Get references
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        faceRight = true;
     }
 
     void Update()
@@ -88,11 +90,13 @@ public class PlayerController : MonoBehaviour
         if (horizontalInputValue < 0)
         {
             animation.SetBool("isMoving", true);
+            faceRight = false;
             transform.localScale = new Vector3(-0.75f, transform.localScale.y, transform.localScale.z);
         }
         else if (horizontalInputValue > 0)
         {
             animation.SetBool("isMoving", true);
+            faceRight = true;
             transform.localScale = new Vector3(0.75f, transform.localScale.y, transform.localScale.z);
         }
         else
@@ -144,5 +148,10 @@ public class PlayerController : MonoBehaviour
         {
             grounded1 = false;
         }
+    }
+
+    public bool GetDirection()
+    {
+        return faceRight;
     }
 }
