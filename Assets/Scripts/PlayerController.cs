@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource playerAudioSource;
 
+    public bool has_power = false;
+
     void Awake()
     {
         //Get references

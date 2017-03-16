@@ -10,7 +10,7 @@ public class PowerUp_DblJump : PowerUp {
     public float duration = 10f;
     public bool poweredUp = false;
     Material oldMaterial;
-    public Material newMaterial;
+    public Color oldColor;
     public AudioClip collectAudioClip;
 
     private AudioSource powerupAudioSource;
@@ -31,9 +31,11 @@ public class PowerUp_DblJump : PowerUp {
             powerupAudioSource.PlayOneShot(collectAudioClip);
 
             PController = player.GetComponent<PlayerController>();
-            oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
+            oldColor = PController.gameObject.GetComponent<Renderer>().material.color;
 
-            PController.GetComponent<Renderer>().material = newMaterial;
+            
+
+            PController.GetComponent<Renderer>().material.color = Color.yellow;
             PController.MaxJumps = newMaxJumps;
             PController.CurrentJumps = 1;
 
@@ -47,7 +49,7 @@ public class PowerUp_DblJump : PowerUp {
     void RevertStats()
     {
         //Reverts all changes the power-up made to the player
-        PController.GetComponent<Renderer>().material = oldMaterial;
+        PController.GetComponent<Renderer>().material.color = oldColor;
         PController.MaxJumps = 1;
         poweredUp = false;
     }

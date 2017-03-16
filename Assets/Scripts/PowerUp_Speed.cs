@@ -12,8 +12,8 @@ public class PowerUp_Speed : PowerUp {
     public bool poweredUp = false;
     float oldSpeed;
     float oldJumpForce;
-    Material oldMaterial;
-    public Material newMaterial;
+    public Color oldColor;
+    
     public AudioClip collectAudioClip;
 
     private AudioSource powerupAudioSource;
@@ -40,15 +40,20 @@ public class PowerUp_Speed : PowerUp {
             }
             else
                 PController = player.GetComponent<PlayerController>(); 
-
-            oldMaterial = PController.gameObject.GetComponent<Renderer>().material;
+            
+            oldColor = PController.gameObject.GetComponent<Renderer>().material.color;
+            
 
             oldSpeed = PController.moveSpeed;
             oldJumpForce = PController.jumpForce;
 
             PController.moveSpeed = oldSpeed + SpeedCapIncrease;
             PController.jumpForce = oldJumpForce + JumpForceIncrease;
-            PController.gameObject.GetComponent<Renderer>().material = newMaterial;
+
+            if (SpeedCapIncrease > 0)
+                PController.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            else if (SpeedCapIncrease < 0)
+                PController.gameObject.GetComponent<Renderer>().material.color = Color.blue;
 
 
             poweredUp = true;
@@ -62,7 +67,7 @@ public class PowerUp_Speed : PowerUp {
         //Reverts all changes the power-up made to the player
         PController.moveSpeed = oldSpeed;
         PController.jumpForce = oldJumpForce;
-        PController.gameObject.GetComponent<Renderer>().material = oldMaterial;
+        PController.gameObject.GetComponent<Renderer>().material.color = oldColor;
         poweredUp = false;
     }
 
