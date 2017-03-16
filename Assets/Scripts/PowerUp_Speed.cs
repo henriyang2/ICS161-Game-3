@@ -17,10 +17,13 @@ public class PowerUp_Speed : PowerUp {
     public AudioClip collectAudioClip;
 
     private AudioSource powerupAudioSource;
+    private ParticleSystem PSystem;
 
     void Awake ()
     { 
         powerupAudioSource = GetComponent<AudioSource>();
+        PSystem = gameObject.GetComponentInChildren<ParticleSystem>();
+        PSystem.Stop();
     }
 
     public override void ActivatePowerUp(GameObject player)
@@ -57,6 +60,8 @@ public class PowerUp_Speed : PowerUp {
 
 
             poweredUp = true;
+
+            PSystem.Play();
 
             gameObject.GetComponent<Renderer>().enabled = false;
         }

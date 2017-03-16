@@ -14,10 +14,13 @@ public class PowerUp_DblJump : PowerUp {
     public AudioClip collectAudioClip;
 
     private AudioSource powerupAudioSource;
+    private ParticleSystem PSystem;
 
     void Awake ()
-    { 
+    {
         powerupAudioSource = GetComponent<AudioSource>();
+        PSystem = GetComponentInChildren<ParticleSystem>();
+        PSystem.Stop();
     }
 
     public override void ActivatePowerUp(GameObject player)
@@ -41,7 +44,7 @@ public class PowerUp_DblJump : PowerUp {
 
 
             poweredUp = true;
-
+            PSystem.Play();
             gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
