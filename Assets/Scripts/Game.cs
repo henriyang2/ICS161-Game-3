@@ -16,6 +16,15 @@ public class Game : MonoBehaviour
 
     public bool gameEnded = false;
 
+    public AudioClip winAudioClip;
+
+    private AudioSource mainAudioSource;
+
+    void Awake ()
+    { 
+        mainAudioSource = GetComponent<AudioSource>();
+    }
+
 	void Start () 
     {
         //If time was frozen, resume it
@@ -33,6 +42,9 @@ public class Game : MonoBehaviour
     //For ending the game
     public void EndGame (string winner)
     {
+        mainAudioSource.Stop();
+        mainAudioSource.PlayOneShot(winAudioClip);
+
         gameEnded = true;
         //change text color
         if(winner == "Player 1")
