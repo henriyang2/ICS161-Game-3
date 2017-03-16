@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public string PLAYER_INPUT_HORIZONTAL_AXIS_STRING;
     public string PLAYER_INPUT_JUMP_STRING;
+    public string PLAYER_INPUT_SHIELD_STRING;
 
     public int MaxJumps = 1;
     public int CurrentJumps = 1;
@@ -28,6 +29,13 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource playerAudioSource;
 
+    public GameObject shield;
+    private bool shieldActive;
+    public float shieldHealth;
+    public float shieldDec;
+    public float shieldRegen;
+    public float mass;
+
     void Awake()
     {
         //Get references
@@ -37,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        shield.SetActive(false);
     }
 
     void Update()
@@ -54,7 +62,20 @@ public class PlayerController : MonoBehaviour
             jump = true;
             playerAudioSource.PlayOneShot(jumpAudioClip);
         }
-        
+
+        if (Input.GetButtonDown(PLAYER_INPUT_SHIELD_STRING))
+        {
+            shield.SetActive(true);
+            shieldActive = true;
+            rb2d.mass = rb2d.mass * mass;
+        }
+        if (Input.GetButtonUp(PLAYER_INPUT_SHIELD_STRING))
+        {
+            shield.SetActive(false);
+            shieldActive = false;
+            rb2d.mass = rb2d.mass/ mass;
+        }   
+
         if (grounded1 || grounded2 || grounded3)
             CurrentJumps = MaxJumps;
 
@@ -71,7 +92,6 @@ public class PlayerController : MonoBehaviour
 
         rb2d.velocity = new Vector2(horizontalInputValue * moveSpeed * Time.deltaTime, rb2d.velocity.y);
 
-
         //Set y velocity directly to perform the jump
         if (jump)
         {
@@ -79,6 +99,18 @@ public class PlayerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce * Time.deltaTime);
 
             jump = false;
+        }
+        if(shieldActive)
+        {
+            if(shield.transform.localScale.x < 1)
+                shield.transform.localScale = new Vector3(1,1,0);
+            shield.transform.localScale -= new Vector3(shieldDec, shieldDec, 0);
+        }
+        if(!shieldActive)
+        {
+            if (shield.transform.localScale.x > shieldHealth)
+                shield.transform.localScale = new Vector3(shieldHealth, shieldHealth, 0);
+            shield.transform.localScale += new Vector3(shieldRegen, shieldRegen, 0);
         }
     }
 }
