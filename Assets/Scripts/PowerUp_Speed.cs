@@ -9,6 +9,7 @@ public class PowerUp_Speed : PowerUp {
     public float SpeedCapIncrease = 1.5f;
     public float JumpForceIncrease = 1f;
     public float duration = 4f;
+    float timer;
     public bool poweredUp = false;
     float oldSpeed;
     float oldJumpForce;
@@ -24,6 +25,7 @@ public class PowerUp_Speed : PowerUp {
         powerupAudioSource = GetComponent<AudioSource>();
         PSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         PSystem.Stop();
+        timer = duration;
     }
 
     public override void ActivatePowerUp(GameObject player)
@@ -80,12 +82,12 @@ public class PowerUp_Speed : PowerUp {
     {
         if (poweredUp)
         {
-            duration -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (duration <= 0)
+        if (timer <= 0)
         {
             RevertStats();
-            duration = 4f;
+            timer = duration;
             destroyPowerUp();
         }
     }

@@ -8,6 +8,7 @@ public class PowerUp_DblJump : PowerUp {
 
     int newMaxJumps = 2;
     public float duration = 10f;
+    float timer;
     public bool poweredUp = false;
     Material oldMaterial;
     public Color oldColor;
@@ -21,6 +22,7 @@ public class PowerUp_DblJump : PowerUp {
         powerupAudioSource = GetComponent<AudioSource>();
         PSystem = GetComponentInChildren<ParticleSystem>();
         PSystem.Stop();
+        timer = duration;
     }
 
     public override void ActivatePowerUp(GameObject player)
@@ -61,12 +63,12 @@ public class PowerUp_DblJump : PowerUp {
     {
         if (poweredUp)
         {
-            duration -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (duration <= 0)
+        if (timer <= 0)
         {
             RevertStats();
-            duration = 10f;
+            timer = duration;
             destroyPowerUp();
         }
     }
