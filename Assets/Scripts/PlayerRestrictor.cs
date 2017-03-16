@@ -16,7 +16,7 @@ public class PlayerRestrictor : MonoBehaviour
     {
         //Get screen clamp values (prevents players from going off screen towards left/right)
         float targetZDistance = (target1.transform.position - Camera.main.transform.position).z;
-        target1Size = target1.GetComponent<CapsuleCollider2D>().bounds.size;
+        target1Size = target1.GetComponent<BoxCollider2D>().bounds.size;
         leftClamp = Camera.main.ViewportToWorldPoint(new Vector3(0.05f, 0f, targetZDistance)).x + (target1Size.x / 2) - 0.6f;
         rightClamp = Camera.main.ViewportToWorldPoint(new Vector3(0.95f, 0f, targetZDistance)).x - (target1Size.x / 2) + 0.6f;
 	}
