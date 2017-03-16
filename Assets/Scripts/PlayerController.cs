@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
         animation = GetComponent<Animator>();
+
+        //To prevent the bug that makes player fall through from happening
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), false);
     }
 
     void Start()
