@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ccdbe2fe91074a9eef1c923d31f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 6.4
   poweredUp: 0
-  newMaterial: {fileID: 2100000, guid: 4f9dbf59183125d4a976d02e73f2a3d4, type: 2}
+  oldColor: {r: 0, g: 0, b: 0, a: 0}
   collectAudioClip: {fileID: 8300000, guid: 8fa16424b048d1f4baddc64790ec1beb, type: 3}
 --- !u!212 &212787804769667814
 SpriteRenderer:
