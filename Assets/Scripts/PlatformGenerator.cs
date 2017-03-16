@@ -8,8 +8,8 @@ public class PlatformGenerator : MonoBehaviour
     public Transform platformGenerationPoint;
 
     //The min and max amount of time for Random.Range it takes to spawn a platform
-    public float spawnMin = 4f;
-    public float spawnMax = 5f;
+    public float spawnMin = 2.75f;
+    public float spawnMax = 3.75f;
     //public float spawnTime = 5f;
 
     //Just rough platform sizes for playtesting purposes, can tune this if needed

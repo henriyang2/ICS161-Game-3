@@ -540,8 +540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformGenerationPoint: {fileID: 0}
-  spawnMin: 4
-  spawnMax: 5
+  spawnMin: 2.75
+  spawnMax: 3.75
   platformSizes:
   - 2
   - 2.5
