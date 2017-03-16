@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpAudioClip;
 
     private Rigidbody2D rb2d;
+    private Animator animation;
 
     private bool grounded1;
     private bool grounded2;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         //Get references
         rb2d = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
+        animation = GetComponent<Animator>();
     }
 
     void Start()
@@ -54,9 +56,16 @@ public class PlayerController : MonoBehaviour
             jump = true;
             playerAudioSource.PlayOneShot(jumpAudioClip);
         }
-        
+
         if (grounded1 || grounded2 || grounded3)
+        {
+            animation.SetBool("onGround", true);
             CurrentJumps = MaxJumps;
+        }
+        else
+        {
+            animation.SetBool("onGround", false);
+        }
 
     }
 
@@ -68,6 +77,20 @@ public class PlayerController : MonoBehaviour
         //If Player  is holding down A or D buttons to move
         horizontalInputValue = Input.GetAxis(PLAYER_INPUT_HORIZONTAL_AXIS_STRING);
 
+        if (horizontalInputValue < 0)
+        {
+            animation.SetBool("isMoving", true);
+            transform.localScale = new Vector3(-0.75f, transform.localScale.y, transform.localScale.z);
+        }
+        else if (horizontalInputValue > 0)
+        {
+            animation.SetBool("isMoving", true);
+            transform.localScale = new Vector3(0.75f, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            animation.SetBool("isMoving", false);
+        }
 
         rb2d.velocity = new Vector2(horizontalInputValue * moveSpeed * Time.deltaTime, rb2d.velocity.y);
 
