@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int CurrentJumps = 1;
 
     public AudioClip jumpAudioClip;
+    public AudioClip hitAudioClip;
 
     private string GROUND_LAYER_NAME = "Ground";
     private string PLATFORM_TAG_NAME = "Platform";
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        faceRight = true;
     }
 
     void Update()
@@ -139,6 +140,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == PLATFORM_TAG_NAME)
         {
             grounded1 = true;
+        }
+        if (collision.gameObject.tag == "bullet")
+        {
+            playerAudioSource.PlayOneShot(hitAudioClip);
         }
     }
 
