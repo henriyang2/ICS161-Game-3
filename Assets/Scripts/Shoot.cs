@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour {
 
-    //public static GameObject character;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     PlayerController player;
-    //public float ammo;
     private float currentRange;
     public float bulletRange;
     public float rangeDecrease;
