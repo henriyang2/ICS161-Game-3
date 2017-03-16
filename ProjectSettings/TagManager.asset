@@ -9,7 +9,6 @@ TagManager:
   - Platform
   - PlatformGenerator
   - PowerUp
-  - bullet
   layers:
   - Default
   - TransparentFX
