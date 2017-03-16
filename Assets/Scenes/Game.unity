@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 82669855}
   - component: {fileID: 82669854}
   - component: {fileID: 82669853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player 1
   m_TagString: Player 1
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 433829740}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 439039599}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: groundCheck3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 504971706}
   - component: {fileID: 504971705}
   - component: {fileID: 504971704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player 2
   m_TagString: Player 2
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 572906950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: groundCheck2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -1343,7 +1343,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1410972514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: groundCheck1
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -1609,7 +1609,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1565919947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: groundCheck1
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -1637,7 +1637,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1592148824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: groundCheck2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -1665,7 +1665,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1696970981}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: groundCheck3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   gameEndText: {fileID: 1309584190}
   restartBtn: {fileID: 1491020220}
   gameEnded: 0
-  winAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 8300000, guid: f8f12e2cb9ab8a644a3f021fe594da51, type: 3}
 --- !u!114 &1835590169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,11 +1887,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 9373bc65eec0ae0409875c168dd9b810, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
