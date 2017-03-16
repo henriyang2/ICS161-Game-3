@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1835590160}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72f069aac14d68847823ab52d34d704e, type: 3}
   m_Name: 
@@ -1865,6 +1865,7 @@ MonoBehaviour:
   gameEndText: {fileID: 1309584190}
   restartBtn: {fileID: 1491020220}
   gameEnded: 0
+  winAudioClip: {fileID: 0}
 --- !u!114 &1835590169
 MonoBehaviour:
   m_ObjectHideFlags: 0
