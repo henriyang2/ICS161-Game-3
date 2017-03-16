@@ -283,6 +283,7 @@ MonoBehaviour:
   MaxJumps: 1
   CurrentJumps: 1
   jumpAudioClip: {fileID: 8300000, guid: 3043f2a079656fc43aee4ce1b45ecfa5, type: 3}
+  has_power: 0
 --- !u!82 &82669858
 AudioSource:
   m_ObjectHideFlags: 0
@@ -539,17 +540,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformGenerationPoint: {fileID: 0}
-  spawnMin: 4
-  spawnMax: 5
+  spawnMin: 2.75
+  spawnMax: 3.75
   platformSizes:
   - 2
   - 2.5
   - 3.5
-  platformPermutationsList:
-  - {fileID: 1730586423757672, guid: 102ac7a96248cce498d3f4b0123ddae7, type: 2}
-  - {fileID: 1065535309367626, guid: 2d1722ade365ce64e8429c1fbeb25d49, type: 2}
-  - {fileID: 1185511087945386, guid: 56ad80ebff0737e498471140c3b36b67, type: 2}
-  - {fileID: 1909065646173518, guid: 3cf9d3802be37c94da7025ed40ede287, type: 2}
 --- !u!33 &228514946
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -753,6 +749,7 @@ MonoBehaviour:
   MaxJumps: 1
   CurrentJumps: 1
   jumpAudioClip: {fileID: 8300000, guid: 3043f2a079656fc43aee4ce1b45ecfa5, type: 3}
+  has_power: 0
 --- !u!50 &504971703
 Rigidbody2D:
   serializedVersion: 4
@@ -1068,7 +1065,6 @@ MonoBehaviour:
   - 2
   - 2.5
   - 3.5
-  platformPermutationsList: []
 --- !u!23 &794180383
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1356,7 +1352,6 @@ MonoBehaviour:
   - 2
   - 2.5
   - 3.5
-  platformPermutationsList: []
 --- !u!23 &1226520920
 MeshRenderer:
   m_ObjectHideFlags: 0
