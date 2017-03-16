@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool grounded3;
 
     //For adjusting layer collisions only once each time in FixedUpdate
-    private bool ignoreGroundCollisionSetTrue = false;
-    private bool ignoreGroundCollisionSetFalse = true;
+    private bool ignoreGroundCollision = false;
 
     private AudioSource playerAudioSource;
 
@@ -113,20 +112,18 @@ public class PlayerController : MonoBehaviour
 
         if (rb2d.velocity.y > 0)
         {
-            if (!ignoreGroundCollisionSetTrue)
+            if (!ignoreGroundCollision)
             {
                 Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), true);
-                ignoreGroundCollisionSetTrue = true;
-                ignoreGroundCollisionSetFalse = false;
+                ignoreGroundCollision = true;
             }
         }
         else
         {
-            if (!ignoreGroundCollisionSetFalse)
+            if (ignoreGroundCollision)
             {
                 Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), false);
-                ignoreGroundCollisionSetTrue = false;
-                ignoreGroundCollisionSetFalse = true;
+                ignoreGroundCollision = false;
             }
         }
     }
