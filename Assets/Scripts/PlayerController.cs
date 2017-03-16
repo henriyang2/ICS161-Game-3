@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private bool grounded2;
     private bool grounded3;
 
+    public bool facingRight;
+
     //For adjusting layer collisions only once each time in FixedUpdate
     private bool ignoreGroundCollision = false;
 
@@ -85,11 +87,13 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalInputValue < 0)
         {
+            facingRight = false;
             animation.SetBool("isMoving", true);
             transform.localScale = new Vector3(-0.75f, transform.localScale.y, transform.localScale.z);
         }
         else if (horizontalInputValue > 0)
         {
+            facingRight = true;
             animation.SetBool("isMoving", true);
             transform.localScale = new Vector3(0.75f, transform.localScale.y, transform.localScale.z);
         }
@@ -142,5 +146,10 @@ public class PlayerController : MonoBehaviour
         {
             grounded1 = false;
         }
+    }
+
+    public bool GetDirection()
+    {
+        return facingRight;
     }
 }
