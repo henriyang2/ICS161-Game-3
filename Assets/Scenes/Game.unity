@@ -285,6 +285,7 @@ MonoBehaviour:
   MaxJumps: 1
   CurrentJumps: 1
   jumpAudioClip: {fileID: 8300000, guid: 3043f2a079656fc43aee4ce1b45ecfa5, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: d9e74b15cdff53a4bb9b909beea9546d, type: 3}
   has_power: 0
 --- !u!82 &82669858
 AudioSource:
@@ -771,6 +772,7 @@ MonoBehaviour:
   MaxJumps: 1
   CurrentJumps: 1
   jumpAudioClip: {fileID: 8300000, guid: 3043f2a079656fc43aee4ce1b45ecfa5, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: d9e74b15cdff53a4bb9b909beea9546d, type: 3}
   has_power: 0
 --- !u!50 &504971703
 Rigidbody2D:
