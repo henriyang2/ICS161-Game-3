@@ -14,7 +14,7 @@ public class PowerUpSpawner : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //Get the list of platform generators
+        
 
     }
 

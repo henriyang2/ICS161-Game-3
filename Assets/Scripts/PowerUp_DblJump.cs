@@ -33,8 +33,7 @@ public class PowerUp_DblJump : PowerUp {
             PController = player.GetComponent<PlayerController>();
             oldColor = PController.gameObject.GetComponent<Renderer>().material.color;
 
-            if (oldColor != Color.white)
-                oldColor = Color.white;
+            
 
             PController.GetComponent<Renderer>().material.color = Color.yellow;
             PController.MaxJumps = newMaxJumps;

@@ -12,7 +12,7 @@ public class PowerUp_Speed : PowerUp {
     public bool poweredUp = false;
     float oldSpeed;
     float oldJumpForce;
-    Color oldColor;
+    public Color oldColor;
     
     public AudioClip collectAudioClip;
 
@@ -42,8 +42,7 @@ public class PowerUp_Speed : PowerUp {
                 PController = player.GetComponent<PlayerController>(); 
             
             oldColor = PController.gameObject.GetComponent<Renderer>().material.color;
-            if (oldColor != Color.white)
-                oldColor = Color.white;
+            
 
             oldSpeed = PController.moveSpeed;
             oldJumpForce = PController.jumpForce;
