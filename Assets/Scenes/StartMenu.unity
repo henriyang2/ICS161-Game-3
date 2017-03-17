@@ -358,7 +358,7 @@ MonoBehaviour:
 
     W / A / S / D to move
 
-    E to shoot'
+    Q / TAB to shoot'
 --- !u!222 &568604571
 CanvasRenderer:
   m_ObjectHideFlags: 0
