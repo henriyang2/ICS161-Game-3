@@ -2,137 +2,173 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
-    public float moveForce = 80f;
-    public float maxSpeed = 5f;
+    public float moveSpeed = 300f;
     public bool jump = false;
-    public float jumpForce = 18f;
+    public float jumpForce = 1000f;
 
     public GameObject groundCheck1;
     public GameObject groundCheck2;
     public GameObject groundCheck3;
 
-    private string PLAYER1_INPUT_HORIZONTAL_AXIS_STRING = "Horizontal1";
-    private string PLAYER1_INPUT_JUMP_STRING = "JumpPlayer1";
-    private string PLAYER1_TAG = "Player 1";
+    public string PLAYER_INPUT_HORIZONTAL_AXIS_STRING;
+    public string PLAYER_INPUT_JUMP_STRING;
 
-    private string PLAYER2_INPUT_HORIZONTAL_AXIS_STRING = "Horizontal2";
-    private string PLAYER2_INPUT_JUMP_STRING = "JumpPlayer2";
-    private string PLAYER2_TAG = "Player 2";
+    public int MaxJumps = 1;
+    public int CurrentJumps = 1;
+
+    public AudioClip jumpAudioClip;
+    public AudioClip hitAudioClip;
+
+    private string GROUND_LAYER_NAME = "Ground";
+    private string PLATFORM_TAG_NAME = "Platform";
 
     private Rigidbody2D rb2d;
+    private Animator animation;
 
     private bool grounded1;
     private bool grounded2;
     private bool grounded3;
 
-    void Awake ()
+    //For adjusting layer collisions only once each time in FixedUpdate
+    private bool ignoreGroundCollision = false;
+
+    private AudioSource playerAudioSource;
+
+    public bool has_power = false;
+
+    private bool faceRight;
+
+    void Awake()
     {
         //Get references
         rb2d = GetComponent<Rigidbody2D>();
+        playerAudioSource = GetComponent<AudioSource>();
+        animation = GetComponent<Animator>();
+
+        //To prevent the bug that makes player fall through from happening
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), false);
     }
 
-	void Start () 
+    void Start()
     {
-		
-	}
-	
-	void Update () 
+        faceRight = true;
+    }
+
+    void Update()
     {
+        //Check if the player's stats are normal, if they are but their color isn't white, change it back to white
+            //This is a workaround for when a player is affected by both Slow and another PowerUp, but when both are over they're
+            //still not the default color
+        if (moveSpeed == 300f && MaxJumps == 1)
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            has_power = false;
+        }
         //Linecast to check if player is on ground
         //3 linecasts for more accurate ground checks
-        grounded1 = Physics2D.Linecast(transform.position, groundCheck1.transform.position, 1 << LayerMask.NameToLayer("Ground"));
-        grounded2 = Physics2D.Linecast(transform.position, groundCheck2.transform.position, 1 << LayerMask.NameToLayer("Ground"));
-        grounded3 = Physics2D.Linecast(transform.position, groundCheck3.transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        //grounded1 = Physics2D.Linecast(transform.position, groundCheck1.transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        //grounded2 = Physics2D.Linecast(transform.position, groundCheck2.transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        //grounded3 = Physics2D.Linecast(transform.position, groundCheck3.transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        //Check if Player 1 or 2
-        if (tag == "Player 1")
+        //If Player pressed W and is grounded, jump
+        if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (CurrentJumps >= 1))
         {
-            //If Player 1 pressed W and is grounded, jump
-            if (Input.GetButtonDown(PLAYER1_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
-            {
-                jump = true;
-            }
+            
+            jump = true;
+            playerAudioSource.PlayOneShot(jumpAudioClip);
         }
-        else if (tag == "Player 2")
-        {
-            //If Player 1 pressed up arrow and is grounded, jump
-            if (Input.GetButtonDown(PLAYER2_INPUT_JUMP_STRING) && (grounded1 || (grounded2 || grounded3)))
-            {
-                jump = true;
-            }
-        }
-	}
 
-    void FixedUpdate ()
+        if (grounded1)
+        {
+            animation.SetBool("onGround", true);
+            CurrentJumps = MaxJumps;
+        }
+        else
+        {
+            animation.SetBool("onGround", false);
+        }
+
+    }
+
+    void FixedUpdate()
     {
         //Variable to hold horizontal GetAxis value
-        float horizontal1InputValue;
-        float horizontal2InputValue;
+        float horizontalInputValue;
 
-        //Check if Player 1 or 2
-        if (tag == "Player 1")
+        //If Player  is holding down A or D buttons to move
+        horizontalInputValue = Input.GetAxis(PLAYER_INPUT_HORIZONTAL_AXIS_STRING);
+
+        if (horizontalInputValue < 0)
         {
-            //If Player 1 is holding down A or D buttons to move
-            horizontal1InputValue = Input.GetAxis(PLAYER1_INPUT_HORIZONTAL_AXIS_STRING);
+            animation.SetBool("isMoving", true);
+            faceRight = false;
+            transform.localScale = new Vector3(-0.75f, transform.localScale.y, transform.localScale.z);
+        }
+        else if (horizontalInputValue > 0)
+        {
+            animation.SetBool("isMoving", true);
+            faceRight = true;
+            transform.localScale = new Vector3(0.75f, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            animation.SetBool("isMoving", false);
+        }
 
-            //If Player is no longer holding down A or D buttons, stop
-            if (horizontal1InputValue == 0f)
-            {
-                rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
-                rb2d.angularVelocity = 0f;
-            }
+        rb2d.velocity = new Vector2(horizontalInputValue * moveSpeed * Time.deltaTime, rb2d.velocity.y);
 
-            //If Player x velocity is lesser than max speed, keep adding speed
-            if (horizontal1InputValue * rb2d.velocity.x < maxSpeed)
-            {
-                rb2d.AddForce(Vector2.right * horizontal1InputValue * moveForce);
-            }
 
-            //If Player x velocity is greater than max speed, set player velocity directly to max speed 
-            if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
-            {
-                rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-            }
+        //Set y velocity directly to perform the jump
+        if (jump)
+        {
+            CurrentJumps -= 1;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce * Time.deltaTime);
 
-            //Set y velocity directly to perform the jump
-            if (jump)
+            jump = false;
+        }
+
+        if (rb2d.velocity.y > 0)
+        {
+            if (!ignoreGroundCollision)
             {
-                jump = false;
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), true);
+                ignoreGroundCollision = true;
             }
         }
-        else if (tag == "Player 2")
+        else
         {
-            //If Player 2 is holding down A or D buttons to move
-            horizontal2InputValue = Input.GetAxis(PLAYER2_INPUT_HORIZONTAL_AXIS_STRING);
-
-            //If Player is no longer holding down A or D buttons, stop
-            if (horizontal2InputValue == 0f)
+            if (ignoreGroundCollision)
             {
-                rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
-                rb2d.angularVelocity = 0f;
-            }
-
-            //If Player x velocity is lesser than max speed, keep adding speed
-            if (horizontal2InputValue * rb2d.velocity.x < maxSpeed)
-            {
-                rb2d.AddForce(Vector2.right * horizontal2InputValue * moveForce);
-            }
-
-            //If Player x velocity is greater than max speed, set player velocity directly to max speed 
-            if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
-            {
-                rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-            }
-
-            //Set y velocity directly to perform the jump
-            if (jump)
-            {
-                jump = false;
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(GROUND_LAYER_NAME), false);
+                ignoreGroundCollision = false;
             }
         }
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if (collision.gameObject.tag == PLATFORM_TAG_NAME)
+        {
+            grounded1 = true;
+        }
+        if (collision.gameObject.tag == "bullet")
+        {
+            playerAudioSource.PlayOneShot(hitAudioClip);
+        }
+    }
+
+    void OnCollisionExit2D (Collision2D collision)
+    {
+        if (collision.gameObject.tag == PLATFORM_TAG_NAME)
+        {
+            grounded1 = false;
+        }
+    }
+
+    public bool GetDirection()
+    {
+        return faceRight;
     }
 }
