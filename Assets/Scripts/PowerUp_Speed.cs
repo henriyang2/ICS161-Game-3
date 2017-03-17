@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp_Speed : PowerUp {
     //Floats holding default values for how much the Speed Power Up boosts the player
-    public PlayerController PController;
+    PlayerController PController;
 
     public float SpeedCapIncrease = 1.5f;
     public float JumpForceIncrease = 1f;
@@ -35,7 +35,6 @@ public class PowerUp_Speed : PowerUp {
         if (poweredUp == false)
         {
             powerupAudioSource.PlayOneShot(collectAudioClip);
-            PController = player.GetComponent<PlayerController>();
 
             if (SpeedCapIncrease < 0)
             {
@@ -44,8 +43,8 @@ public class PowerUp_Speed : PowerUp {
                 else
                     PController = GameObject.FindGameObjectWithTag("Player 1").GetComponent<PlayerController>();
             }
-            
-                
+            else
+                PController = player.GetComponent<PlayerController>(); 
             
             oldColor = PController.gameObject.GetComponent<Renderer>().material.color;
             
@@ -65,7 +64,7 @@ public class PowerUp_Speed : PowerUp {
             poweredUp = true;
 
             PSystem.Play();
-            
+
             gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
