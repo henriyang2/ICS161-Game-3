@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 630189038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.65, z: 1}
+  m_LocalPosition: {x: -0.13, y: -3.01, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1835590165}
@@ -1127,7 +1127,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 713073913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 2.99, z: 1}
+  m_LocalPosition: {x: -0.02, y: 1.84, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1835590165}
@@ -1455,7 +1455,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1154268311}
   serializedVersion: 5
   lengthInSec: 1
-  speed: 1
+  simulationSpeed: 1
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -4932,8 +4932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f069aac14d68847823ab52d34d704e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 0.01
-  cameraExtraSpeed: 0.005
+  cameraSpeed: 0.022
+  cameraExtraSpeed: 0.011
   player1: {fileID: 82669856}
   player2: {fileID: 504971707}
   threshold: {fileID: 630189039}
