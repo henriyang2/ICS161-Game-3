@@ -28,9 +28,7 @@ public class PowerUp_DblJump : PowerUp {
     public override void ActivatePowerUp(GameObject player)
     {
         //Makes two jumps available to the player
-        //Also currently changes the player's material to indicate that they're powered up
-
-        //Changes Material back to the previous one
+        
         if(poweredUp == false)
         { 
             powerupAudioSource.PlayOneShot(collectAudioClip);
@@ -55,6 +53,7 @@ public class PowerUp_DblJump : PowerUp {
     {
         //Reverts all changes the power-up made to the player
         PController.GetComponent<Renderer>().material.color = oldColor;
+        
         PController.MaxJumps = 1;
         poweredUp = false;
     }
