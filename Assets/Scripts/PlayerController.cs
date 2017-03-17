@@ -58,6 +58,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Check if the player's stats are normal, if they are but their color isn't white, change it back to white
+            //This is a workaround for when a player is affected by both Slow and another PowerUp, but when both are over they're
+            //still not the default color
+        if (moveSpeed == 300f && MaxJumps == 1)
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            has_power = false;
+        }
         //Linecast to check if player is on ground
         //3 linecasts for more accurate ground checks
         //grounded1 = Physics2D.Linecast(transform.position, groundCheck1.transform.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -67,6 +75,7 @@ public class PlayerController : MonoBehaviour
         //If Player pressed W and is grounded, jump
         if (Input.GetButtonDown(PLAYER_INPUT_JUMP_STRING) && (CurrentJumps >= 1))
         {
+            
             jump = true;
             playerAudioSource.PlayOneShot(jumpAudioClip);
         }

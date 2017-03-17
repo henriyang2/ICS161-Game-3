@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
-    bool pickedUp = false;
+    public bool pickedUp = false;
     GameObject Player;
     //Abstract class for powerups
 
