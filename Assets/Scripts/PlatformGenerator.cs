@@ -30,7 +30,7 @@ public class PlatformGenerator : MonoBehaviour
        
     void Spawn ()
     {
-        int platformsToSpawn = Random.Range(1, 4);
+        int platformsToSpawn = Random.Range(1, 3);
         int bigPlatformToSpawn = Mathf.RoundToInt(Random.value);
 
         if(bigPlatformToSpawn == 1)
@@ -51,17 +51,27 @@ public class PlatformGenerator : MonoBehaviour
             //Setting up platform location and size
             //Change size based on the three platform sizes initiated, can tune this if needed
             Vector3 spawnPos = new Vector3(transform.position.x + Random.Range(-5.3f, 5.3f), transform.position.y + Random.Range(0f, 2f), transform.position.z);
-            Vector3 boxSize = new Vector3(5f, 5f, 1f);
+            Vector3 boxSize = new Vector3(2.5f, 2.5f, 1f);
             float lowX = -5f;
             float minHorizontal = 0.3f;
             float lowY = 0f;
             float minVertical = 0.1f;
-            while (Physics.CheckBox(spawnPos,boxSize))
+            bool foundSpawn = false;
+            while (!foundSpawn)
             {
-                spawnPos.Set(transform.position.x + Random.Range(lowX, 5.3f), transform.position.y + Random.Range(lowY, lowY + 2f), transform.position.z);
-                lowX += minHorizontal;
-                lowY += minVertical;
+                RaycastHit2D hit = Physics2D.BoxCast(spawnPos, boxSize, 0, Vector2.zero); //Physics2D.Raycast(spawnPos, Vector2.zero);
+                if (hit != null && hit.collider != null)
+                {
+                    spawnPos.Set(transform.position.x + Random.Range(lowX, 5.3f), transform.position.y + Random.Range(lowY, lowY + 2f), transform.position.z);
+                    lowX += minHorizontal;
+                    lowY += minVertical;
+                }
+                else
+                {
+                    foundSpawn = true;
+                }
             }
+
             obj.transform.position = spawnPos;
             obj.transform.rotation = transform.rotation;
             //obj.transform.localScale = new Vector3(platformSizes[Random.Range(0, platformSizes.Length)], obj.transform.localScale.y, obj.transform.localScale.z);
